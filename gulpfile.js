@@ -7,10 +7,7 @@ var gulp = require('gulp'),
     minify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     gulpif = require('gulp-if'),
-    rename = require('gulp-rename'),
-    htmlmin = require('gulp-htmlmin'),
-    uncss = require('gulp-uncss'),
-    ckeckcss = require('gulp-check-unused-css');
+    rename = require('gulp-rename');
 
 var build = 'assets/dist/';
 
@@ -59,18 +56,6 @@ gulp.task('clean', function () {
   ]);
 });
 
-// gulp.task('html', function () {
-//   return gulp.src('index.html')
-//       .pipe(htmlmin({collapseWhitespace: true}))
-//       .pipe(gulp.dest('.'));
-// });
-
-// gulp.task('unused', function () {
-//   return gulp.src([build + 'app.css', 'index.html'])
-//       .pipe(ckeckcss());
-// });
-
-gulp.task('default', ['clean'], function () {
-  gulp.start('js', 'css', 'min');
+gulp.task('default', function () {
+  gulp.start('clean', 'js', 'css', 'min');
 });
-
